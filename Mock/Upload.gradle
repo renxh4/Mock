@@ -1,0 +1,67 @@
+apply plugin: 'maven-publish'
+apply plugin: 'signing'
+
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId 'io.githunb.renxh4' //开通maven central时候定义的
+            artifactId 'test-aar' //资源名称
+            version '0.0.1' //版本名称
+            pom {
+                name = 'text-aar'
+                description = 'arr'
+                url = 'https://github.com/renxh4/TextJCenter'
+                inceptionYear = '2022'
+
+                scm {
+                    url = 'https://github.com/renxh4/TextJCenter'
+                    connection = 'scm:git@https://github.com/renxh4/TextJCenter.git'
+                    developerConnection = 'scm:git@https://github.com/renxh4/TextJCenter.git'
+                }
+
+                licenses {
+                    license {
+                        name = 'The Apache Software License, Version 2.0'
+                        url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                        distribution = 'repo'
+                        comments = 'A business-friendly OSS license'
+                    }
+                }
+
+                developers {
+                    developer {
+                        id = 'xiaohui'
+                        name = 'ren'
+                        email = '18039395421@163.com'
+                        url = 'https://github.com/renxh4/TextJCenter'
+                    }
+                }
+
+                issueManagement {
+                    system = 'Github'
+                    url = 'https://github.com/renxh4/TextJCenter'
+                }
+
+            }
+
+            artifact './build/outputs/aar/mylibrary-release.aar'
+        }
+
+    }
+
+    repositories {
+        maven {
+            // 指定要上传的maven仓库
+            url = 'https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/'
+            //Maven仓库用户名和密码
+            credentials {
+                username 'renxhui'
+                password 'AdHu!@2012..'
+            }
+        }
+    }
+}
+signing {
+    sign publishing.publications.maven //签名配置
+}
