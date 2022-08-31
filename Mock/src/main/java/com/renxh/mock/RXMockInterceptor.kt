@@ -25,6 +25,11 @@ class RXMockInterceptor : Interceptor {
                     .body(ResponseBody.create(mediaType, api.mockresponse))
                     .build()
             } else {
+                MockSdk.db?.updata(Api().apply {
+                    this.url = request.url().toString()
+                    this.request = requestLog
+                    this.response = responseLog
+                })
                 return response
             }
         } else {
