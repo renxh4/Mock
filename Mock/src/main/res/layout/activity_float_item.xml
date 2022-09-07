@@ -1,8 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="100dp"
-    android:layout_height="100dp"
-    android:background="@color/design_default_color_error">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/mock_root"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/bg_mock_shape">
+        <TextView
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="mock"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/mock_ip_root"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_mock_ip_shape"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        >
+
+        <ImageView
+            android:layout_gravity="center"
+            android:id="@+id/mock_ip_img"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@mipmap/bg_close_whrite_dialog"/>
+
+        <TextView
+            android:id="@+id/mock_ip_text"
+            android:layout_margin="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="请在浏览器输入 111：1111：111：111 进行mock数据"/>
+
+    </LinearLayout>
+
+
+
 
 
 

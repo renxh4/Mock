@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="Mock/src/main/res/drawable/bg_mock_ip_shape.xml" value="0.2505" />
+        <entry key="Mock/src/main/res/drawable/bg_mock_shape.xml" value="0.2505" />
         <entry key="Mock/src/main/res/layout/activity_float_item.xml" value="0.4244791666666667" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.19114583333333332" />
       </map>

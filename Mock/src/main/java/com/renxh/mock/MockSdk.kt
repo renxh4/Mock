@@ -14,14 +14,11 @@ object MockSdk {
     var db: DbUtils? = null
     fun init(application: Application) {
         this.application = application
-        db = DbUtils(application)
+        db = DbUtils()
         MockServer.init(application)
-        val ipAddress = IPConfig.getIpAddress(application)
-        Log.d("MockSdk", ipAddress + "/")
-
-
+        initService(application)
     }
-    fun initService(activity: Activity) {
+    fun initService(activity: Application) {
         Utils.checkSuspendedWindowPermission(activity) {
             activity.startService(Intent(activity, SuspendwindowService::class.java))
         }

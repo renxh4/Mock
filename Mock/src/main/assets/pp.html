@@ -86,14 +86,19 @@
                     $check.click(()=>{
                         let path = $check.prev().html();
                         let flag = $check.children().eq(0).is(':checked') ? '1' :'0';
-                        $.getJSON('mockopen' ,{url:path,open:flag},function(data) {
+                        let doc  = new DOMParser().parseFromString(path, 'text/html');
+                        let urlpath = doc.documentElement.textContent;
+                        console.log(urlpath,"拿到的url222");
+                        $.getJSON('mockopen' ,{url:urlpath,open:flag},function(data) {
                             console.log(data,"j结果");
                         });
                     });
                     $uplate.click(()=>{
                         let path = $check.parent().children().eq(0).html();
                         let val = $uplate.prev().val();
-                        $.getJSON('mockresponse' ,{url:path,json:val},function(data) {
+                        let doc  = new DOMParser().parseFromString(path, 'text/html');
+                        let urlpath = doc.documentElement.textContent;
+                        $.getJSON('mockresponse' ,{url:urlpath,json:val},function(data) {
                             console.log(data,"结果");
                         });
                     })

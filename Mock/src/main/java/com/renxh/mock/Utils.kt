@@ -2,8 +2,10 @@ package com.renxh.mock
 
 import android.app.Activity
 import android.app.ActivityManager
+import android.app.Application
 import android.content.Context
 import android.content.Intent
+import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
 import android.net.Uri
 import android.os.Build
 import android.provider.Settings
@@ -19,7 +21,8 @@ import java.util.*
  * @Compony 永远相信美好的事情即将发生
  */
 object Utils {
-    const val REQUEST_FLOAT_CODE=1001
+    const val REQUEST_FLOAT_CODE = 1001
+
     /**
      * 跳转到设置页面申请打开无障碍辅助功能
      */
@@ -77,14 +80,15 @@ object Utils {
     /**
      * 检查悬浮窗权限是否开启
      */
-    fun checkSuspendedWindowPermission(context: Activity, block: () -> Unit) {
+    fun checkSuspendedWindowPermission(context: Application, block: () -> Unit) {
         if (commonROMPermissionCheck(context)) {
             block()
         } else {
             Toast.makeText(context, "请开启悬浮窗权限", Toast.LENGTH_SHORT).show()
-            context.startActivityForResult(Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION).apply {
+            context.startActivity(Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION).apply {
                 data = Uri.parse("package:${context.packageName}")
-            }, REQUEST_FLOAT_CODE)
+                addFlags(FLAG_ACTIVITY_NEW_TASK)
+            })
         }
     }
 //

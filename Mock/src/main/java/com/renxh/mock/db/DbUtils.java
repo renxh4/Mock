@@ -23,7 +23,7 @@ public class DbUtils {
     // 步骤1：创建DatabaseHelper对象
     // 注：此时还未创建数据库
 
-    public DbUtils(Context context) {
+    public DbUtils() {
         SQLiteOpenHelper dbHelper = new DatabaseHelper(MockSdk.INSTANCE.getApplication(), "test_carson");
         // 步骤2：真正创建 / 打开数据库
         // 创建 or 打开 可读/写的数据库

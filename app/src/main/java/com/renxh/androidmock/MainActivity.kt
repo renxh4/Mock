@@ -12,8 +12,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
-        findViewById<TextView>(R.id.textview).setOnClickListener {
-            MockSdk.initService(this)
-        }
+//        findViewById<TextView>(R.id.textview).setOnClickListener {
+//            MockSdk.initService(this)
+//        }
     }
 }
