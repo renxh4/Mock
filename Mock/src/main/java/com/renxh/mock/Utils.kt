@@ -80,15 +80,24 @@ object Utils {
     /**
      * 检查悬浮窗权限是否开启
      */
-    fun checkSuspendedWindowPermission(context: Application, block: () -> Unit) {
+    fun checkSuspendedWindowPermission(context: Activity, block: () -> Unit) {
         if (commonROMPermissionCheck(context)) {
             block()
         } else {
             Toast.makeText(context, "请开启悬浮窗权限", Toast.LENGTH_SHORT).show()
-            context.startActivity(Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION).apply {
+//            context.startActivityForResult(Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION).apply {
+//                data = Uri.parse("package:${context.packageName}")
+//            }, REQUEST_FLOAT_CODE)
+
+            val intent = Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION).apply {
                 data = Uri.parse("package:${context.packageName}")
-                addFlags(FLAG_ACTIVITY_NEW_TASK)
-            })
+            }
+            ActivityLauncher.init(context).startActivityForResult(intent) { resultCode, data ->
+                if (resultCode==0){
+                    block()
+                }
+            }
+
         }
     }
 //

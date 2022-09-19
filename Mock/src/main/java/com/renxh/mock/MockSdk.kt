@@ -12,13 +12,13 @@ import com.renxh.mock.db.DbUtils
 object MockSdk {
     var application: Application? = null
     var db: DbUtils? = null
-    fun init(application: Application) {
-        this.application = application
+    fun init(application: Activity) {
+        this.application = application.application
         db = DbUtils()
         MockServer.init(application)
         initService(application)
     }
-    fun initService(activity: Application) {
+    fun initService(activity: Activity) {
         Utils.checkSuspendedWindowPermission(activity) {
             activity.startService(Intent(activity, SuspendwindowService::class.java))
         }
