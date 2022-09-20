@@ -60,7 +60,7 @@ class SuspendwindowService : Service() {
             height = WindowManager.LayoutParams.WRAP_CONTENT;
             gravity = Gravity.LEFT or Gravity.TOP
             //设置剧中屏幕显示
-            x = outMetrics.widthPixels / 2 - width / 2
+            x = 0
             y = outMetrics.heightPixels / 2 - height / 2
         }
         // 新建悬浮窗控件
